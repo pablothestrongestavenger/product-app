@@ -51,9 +51,6 @@ export default {
     },
     cancelEdit() {
       this.editedProduct = null;
-    },
-    toggleOffcanvas() {
-      // Implement offcanvas toggle logic
     }
   }
 }
