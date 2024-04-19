@@ -53,7 +53,8 @@
           const newProduct = {
             name: this.name,
             description: this.description,
-            price: this.price
+            price: this.price,
+            imageUrl: this.imageData
           }
           this.$emit('add', newProduct)
           this.clearForm()
@@ -64,45 +65,42 @@
         this.description = ''
         this.price = 0
         this.formSubmitted = false;
+        this.$refs.imageInput.value = '';
       },
       handleImageUpload(event) {
         const file = event.target.files[0];
         if (file && this.isImage(file)) {
-            // Read the file as a data URL
-            const reader = new FileReader();
-            reader.onload = () => {
-            // Set imageData to the data URL
+          const reader = new FileReader();
+          reader.onload = () => {
             this.imageData = reader.result;
-            };
-            reader.readAsDataURL(file);
+          };
+          reader.readAsDataURL(file);
         } else {
-            // Clear the input if an invalid file is selected
-            this.$refs.imageInput.value = '';
-            // Optionally, you can show an error message to the user
-            alert('Please select a valid JPG or PNG image.');
+          this.$refs.imageInput.value = '';
+          alert('Please select a valid JPG or PNG image.');
         }
-        },
-        isImage(file) {
+      },
+      isImage(file) {
         const fileType = file.type;
         return /^image\/(jpeg|png)$/.test(fileType);
-        }
+      }
     }
   }
   </script>
     
-    <style>
-    .floating-square {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 400px;
-        height: 400px;
-        background-color: skyblue;
-        border: 2px solid #000000;
-        border-radius: 20px; /* Adjust this value to control the roundness */
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-  </style>
+<style>
+.floating-square {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-color: skyblue;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+</style>
   
