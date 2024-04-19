@@ -11,6 +11,7 @@
 
     <!-- Main content -->
     <div class="main-content">
+      <h1>Store Gadgets</h1>
       <router-view @add="addProduct" @edit-product="editProduct" @delete-product="deleteProduct" />
       
       <!-- Edit Product -->
