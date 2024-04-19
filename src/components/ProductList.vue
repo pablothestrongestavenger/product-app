@@ -9,8 +9,9 @@
             <p class="card-text">{{ product.description }}</p>
             <p class="card-text">Price: ${{ product.price }}</p>
             
-            <button @click="editProduct(product)" class="btn btn-primary stretched-link">Edit</button>
             <button @click="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
+            &nbsp; <!-- Non-breaking space to add space between buttons -->
+            <button @click="editProduct(product)" class="btn btn-primary">Edit</button>
           </div>
         </div>
       </div>
@@ -29,8 +30,9 @@ export default {
     editProduct(product) {
       this.$emit('edit-product', product);
     },
-    deleteProduct(id) {
+    deleteProduct(id) { 
       this.$emit('delete-product', id);
+      alert('Deleted successfully');
     }
   }
 }
