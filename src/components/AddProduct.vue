@@ -57,6 +57,7 @@
             imageUrl: this.imageData
           }
           this.$emit('add', newProduct)
+          alert('Added successfully')
           this.clearForm()
         }
       },

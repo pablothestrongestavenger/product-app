@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <transition-group name="fade">
+    <transition-group name="run-away">
       <div class="col-md-4" v-for="product in products" :key="product.id">
         <div class="card" :id="'product-' + product.id">
           <img :src="product.imageUrl" class="card-img-top" :alt="product.name">
@@ -39,7 +39,19 @@ export default {
 </script>
 
 <style>
-.btn-danger {
-  margin-left: 5px;
+.run-away-enter-active {
+  transition: transform 0.5s;
+}
+.run-away-leave-active {
+  animation: run-away 0.5s ease-out;
+}
+
+@keyframes run-away {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 </style>
