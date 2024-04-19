@@ -2,7 +2,6 @@
     <div class="row">
       <div class="col-md-4" v-for="product in products" :key="product.id">
         <div class="card">
-          <img :src="product.imageUrl" class="card-img-top" :alt="product.name">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">{{ product.description }}</p>

@@ -24,11 +24,6 @@
               Please provide a valid price.
             </div>
           </div>
-          <div class="form-group">
-            <label for="productImage">Image:</label>
-            <input type="file" ref="imageInput" accept="image/jpeg, image/png" @change="handleImageUpload" id="productImage" class="form-control">
-            <small class="text-muted">Accepts only JPG and PNG files.</small>
-          </div>
           <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
       </div>
