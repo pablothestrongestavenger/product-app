@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas" aria-controls="productOffcanvas">
-      <span class="navbar-toggler-icon"></span>
+      Add Product
     </button>
 
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="productOffcanvas" aria-labelledby="productOffcanvasLabel">
