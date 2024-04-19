@@ -29,8 +29,9 @@ export default {
     editProduct(product) {
       this.$emit('edit-product', product);
     },
-    deleteProduct(id) {
+    deleteProduct(id) { 
       this.$emit('delete-product', id);
+      alert('Deleted successfully');
     }
   }
 }
