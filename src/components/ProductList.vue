@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style>
+/* Transition styles */
 .run-away-enter-active {
   transition: transform 0.5s;
 }
@@ -58,6 +59,7 @@ export default {
     transform: translateX(-100%);
   }
 }
+
 .container {
     max-width: 800px;
     margin: 0 auto;
