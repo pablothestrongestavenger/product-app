@@ -11,7 +11,6 @@
 
     <!-- Main content -->
     <div class="main-content">
-      <h1>Store Gadgets</h1>
       <router-view @add="addProduct" @edit-product="editProduct" @delete-product="deleteProduct" />
       
       <!-- Edit Product -->
@@ -60,38 +59,40 @@ export default {
 <style>
 /* Sidebar styles */
 .sidebar {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
 .sidebar h3 {
-  color: white;
-  padding-left: 10px;
+    color: white;
+    padding-left: 10px;
 }
 
 .sidebar ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
 .sidebar ul li {
-  padding: 8px;
+    padding: 8px;
+    transition: transform 0.3s ease; /* Add transition for lift effect */
 }
 
 .sidebar ul li a {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
-.sidebar ul li a:hover {
-  background-color: #555;
+.sidebar ul li:hover {
+    background-color: #555;
+    transform: translateY(-5px); /* Lift effect */
 }
 
 /* Main content styles */
