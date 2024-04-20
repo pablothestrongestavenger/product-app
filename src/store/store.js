@@ -8,7 +8,9 @@ const store = createStore({
       { id: 3, name: 'Golden', description: 'Jungkook BTS', price: 500, imageUrl: 'images/Golden.jpg' },
       { id: 4, name: 'I Never Die', description: 'G-idle', price: 600, imageUrl: 'images/idle.jpg' },
       { id: 5, name: 'I Feel', description: 'G-idle', price: 459, imageUrl: 'images/ifeel.jpg' },
-      { id: 6, name: 'Fancy', description: 'TWICE', price: 799, imageUrl: 'images/fancy.jpg' }
+      { id: 6, name: 'Fancy', description: 'TWICE', price: 799, imageUrl: 'images/fancy.jpg' },
+      { id: 7, name: 'Blackpink Lightstick', description: 'Blackpink', price: 899, imageUrl: 'images/bplightstick.jpg' },
+      { id: 8, name: 'Itzy Lightstick', description: 'ITZY', price: 899, imageUrl: 'images/itzylightstick.jpg' },
     ]
   },
   mutations: {

@@ -74,7 +74,7 @@ export default {
     padding: 30px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    animation: floatAnimation 3s infinite alternate; /* Animation */
+    animation: floatAnimation 1s infinite alternate; /* Animation */
 }
 
 h2 {
