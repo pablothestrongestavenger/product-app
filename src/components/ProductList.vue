@@ -6,7 +6,7 @@
   <div class="row">
     <transition-group name="run-away">
       <div class="col-md-4" v-for="product in products" :key="product.id">
-        <div class="card mb-4" :id="'product-' + product.id">
+        <div class="card mb-4 product-card" :id="'product-' + product.id">
           <img :src="product.imageUrl" class="card-img-top" :alt="product.name">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
@@ -43,6 +43,14 @@ export default {
 </script>
 
 <style>
+.product-card {
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
 /* Transition styles */
 .run-away-enter-active {
   transition: transform 0.5s;
