@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import ProductList from '../components/ProductList.vue'
-import AddProduct from '../components/AddProduct.vue'
-import EditProduct from '../components/EditProduct.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import ProductList from '../components/ProductList.vue';
+import AddProduct from '../components/AddProduct.vue';
+import EditProduct from '../components/EditProduct.vue';
 
 const routes = [
   {
@@ -19,11 +19,11 @@ const routes = [
     name: 'EditProduct',
     component: EditProduct
   }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
 
-export default router
+export default router;

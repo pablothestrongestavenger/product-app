@@ -53,9 +53,11 @@
           const newProduct = {
             name: this.name,
             description: this.description,
-            price: this.price
+            price: this.price,
+            imageUrl: this.imageData
           }
           this.$emit('add', newProduct)
+          alert('Added successfully')
           this.clearForm()
         }
       },
@@ -64,28 +66,25 @@
         this.description = ''
         this.price = 0
         this.formSubmitted = false;
+        this.$refs.imageInput.value = '';
       },
       handleImageUpload(event) {
         const file = event.target.files[0];
         if (file && this.isImage(file)) {
-            // Read the file as a data URL
-            const reader = new FileReader();
-            reader.onload = () => {
-            // Set imageData to the data URL
+          const reader = new FileReader();
+          reader.onload = () => {
             this.imageData = reader.result;
-            };
-            reader.readAsDataURL(file);
+          };
+          reader.readAsDataURL(file);
         } else {
-            // Clear the input if an invalid file is selected
-            this.$refs.imageInput.value = '';
-            // Optionally, you can show an error message to the user
-            alert('Please select a valid JPG or PNG image.');
+          this.$refs.imageInput.value = '';
+          alert('Please select a valid JPG or PNG image.');
         }
-        },
-        isImage(file) {
+      },
+      isImage(file) {
         const fileType = file.type;
         return /^image\/(jpeg|png)$/.test(fileType);
-        }
+      }
     }
   }
   </script>
@@ -106,5 +105,3 @@
     }
   </style>
   
-
-  <!-- End Here -->

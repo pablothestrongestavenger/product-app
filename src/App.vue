@@ -1,66 +1,103 @@
 <template>
   <div id="app">
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas" aria-controls="productOffcanvas">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="productOffcanvas" aria-labelledby="productOffcanvasLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="productOffcanvasLabel">Product Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <AddProduct @add="addProduct" />
-      </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <ul>
+        <li><router-link to="/">Product List</router-link></li>
+        <li><router-link to="/add">Add Product</router-link></li>
+      </ul>
     </div>
-    <ProductList :products="products" />
-    <EditProduct v-if="editedProduct" :product="editedProduct" @edit="saveEditedProduct" />
+
+    <!-- Main content -->
+    <div class="main-content">
+      <router-view @add="addProduct" @edit-product="editProduct" @delete-product="deleteProduct" />
+      
+      <!-- Edit Product -->
+      <transition name="bounce">
+        <EditProduct v-if="editedProduct !== null" :product="editedProduct" @changes-saved="handleChangesSaved" @cancel-edit="cancelEdit" />
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-import ProductList from './components/ProductList.vue'
-import AddProduct from './components/AddProduct.vue'
-import EditProduct from './components/EditProduct.vue'
+import { mapActions } from 'vuex'; 
+import EditProduct from './components/EditProduct.vue';
 
 export default {
   components: {
-    ProductList,
-    AddProduct,
     EditProduct
   },
   data() {
     return {
-      products: [
-        { id: 1, name: 'Product 1', description: 'Description 1', price: 10 },
-        { id: 2, name: 'Product 2', description: 'Description 2', price: 20 }
-      ],
       editedProduct: null
-    }
+    };
   },
   methods: {
+    ...mapActions(['addProductAction', 'updateProductAction', 'deleteProductAction']),
+
     addProduct(newProduct) {
-      this.products.push({ ...newProduct, id: this.products.length + 1 })
-      // Add animation logic here
+      this.addProductAction(newProduct);
     },
     editProduct(product) {
-      this.editedProduct = product
+      this.editedProduct = { ...product };
     },
-    saveEditedProduct(editedProduct) {
-      const index = this.products.findIndex(p => p.id === editedProduct.id)
-      if (index !== -1) {
-        this.products.splice(index, 1, editedProduct)
-        // Add animation logic here
-        this.editedProduct = null
-      }
+    handleChangesSaved() {
+      this.editedProduct = null;
     },
     deleteProduct(id) {
-      const index = this.products.findIndex(p => p.id === id)
-      if (index !== -1) {
-        this.products.splice(index, 1)
-        // Add animation logic here
-      }
+      this.deleteProductAction(id);
+    },
+    cancelEdit() {
+      this.editedProduct = null;
     }
   }
 }
 </script>
+
+<style>
+/* Sidebar styles */
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidebar h3 {
+    color: white;
+    padding-left: 10px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 8px;
+    transition: transform 0.3s ease; /* Add transition for lift effect */
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul li:hover {
+    background-color: #555;
+    transform: translateY(-5px); /* Lift effect */
+}
+
+/* Main content styles */
+.main-content {
+  margin-left: 200px; /* Same as the width of the sidebar */
+  padding: 20px;
+}
+</style>
